@@ -1,0 +1,7 @@
+;;  Local settings (applied before loading main setup)
+
+;(add-to-list 'load-path "~/src/erl/wrangler/elisp")
+;; add distel *after* wrangler to override the distel version in wrangler
+;(add-to-list 'load-path "~/src/erl/distel/elisp")
+
+;(add-to-list 'load-path "~/src/elisp/sonic-pi-mode")

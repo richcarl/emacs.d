@@ -1,0 +1,11 @@
+;;  Local early-startup script
+;; (note that any messages at this stage get printed to the console)
+;(message "Loading local early init")
+
+;; local modifications to the basic settings done in early-init.el
+(modify-all-frames-parameters
+ '(;(width . 86)
+   ;(height . 42)
+   ;(vertical-scroll-bars . nil)  ; right, left, or nil
+   ;(tool-bar-lines . 0)  ; 0 disables
+   ))
