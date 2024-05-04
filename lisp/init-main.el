@@ -45,12 +45,13 @@
 
 (eval-when-compile (require 'use-package)
                    (require 'use-package-ensure)
-                   (setq use-package-always-ensure t))
+                   (setopt use-package-always-ensure t))
 
 (use-package auto-package-update
   :config
-  (setq auto-package-update-delete-old-versions t)
-  (setq auto-package-update-hide-results t)
+  (setopt auto-package-update-delete-old-versions t)
+  (setopt auto-package-update-hide-results t)
+  (setopt auto-package-update-interval 14)
   (auto-package-update-maybe))
 
 
