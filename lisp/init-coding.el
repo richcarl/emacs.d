@@ -317,6 +317,11 @@ alternative is `LSP Mode', using the function `lsp'."
   )
 
 
+;; Assembler
+;; Emacs builtin asm-mode recognizes only .asm and .s or .S by defaults
+(add-to-list 'auto-mode-alist '("\\.z80\\'" . asm-mode))
+
+
 ;; Lua
 (use-package lua-mode)
 
