@@ -7,7 +7,7 @@
 
 ;; Shuddup already.
 (setopt inhibit-startup-message t)
-(setopt initial-scratch-message "")
+(setopt initial-scratch-message nil)
 
 
 ;; Ensure exec path is the same as a normal shell path on Mac OS
@@ -32,10 +32,7 @@
 ;; Package management
 
 ;; Add MELPA to package archives
-(require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
-;(package-refresh-contents)
 
 ;; Set up use-package to automate package installation
 (unless (package-installed-p 'use-package)
@@ -43,9 +40,10 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(eval-when-compile (require 'use-package)
-                   (require 'use-package-ensure)
-                   (setopt use-package-always-ensure t))
+(eval-when-compile
+  (require 'use-package)
+  (require 'use-package-ensure)
+  (setopt use-package-always-ensure t))
 
 (use-package auto-package-update
   :config
