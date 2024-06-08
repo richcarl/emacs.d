@@ -7,7 +7,7 @@
 
 ;; General behaviour
 (setopt visible-bell t)    ; be quiet
-(setopt frame-title-format (concat  "%b - emacs@" (system-name)))
+(setopt frame-title-format (concat  "Emacs@" (system-name) "- %b"))
 (setopt confirm-kill-emacs 'yes-or-no-p)  ; don't close Emacs by accident
 (setopt use-short-answers t)  ; y or n instead of yes or no
 (setopt use-dialog-box nil)  ; call me old fashioned, but...
