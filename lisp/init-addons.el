@@ -22,14 +22,26 @@
 ;; Support for .editorconfig files (https://editorconfig.org/)
 (use-package editorconfig
   :config
+  (setopt editorconfig-override-file-local-variables nil)
+  (setopt editorconfig-override-dir-local-variables nil)
   (add-hook 'after-init-hook 'editorconfig-mode))
+
+
+;; Improved help
+(use-package helpful
+  :config
+  (global-set-key (kbd "C-h f") #'helpful-callable)
+  (global-set-key (kbd "C-h v") #'helpful-variable)
+  (global-set-key (kbd "C-h k") #'helpful-key)
+  (global-set-key (kbd "C-h x") #'helpful-command)
+  (global-set-key (kbd "C-c C-d") #'helpful-at-point))
 
 
 ;; Terminal (Eat: Emulate-a-terminal)
 ;; note: run 'eat-compile-terminfo' if keys are not working properly
 (use-package eat
   :config
-  (setq eat-enable-shell-prompt-annotation nil)  ; drop the extra margin
+  (setopt eat-enable-shell-prompt-annotation nil)  ; drop the extra margin
   (global-set-key (kbd "C-c s") 'eat)
   (add-to-list 'eat-semi-char-non-bound-keys [?\e ?o]) ;M-o for ace-window
   (add-to-list 'eat-semi-char-non-bound-keys [?\e ?g]) ;M-g for misc gotos
@@ -110,7 +122,7 @@
   (define-key undo-tree-map (kbd "M-z") 'undo-tree-undo)
   (define-key undo-tree-map (kbd "S-C-z") 'undo-tree-redo)
   (define-key undo-tree-map (kbd "M-Z") 'undo-tree-redo)
-  (setq undo-tree-auto-save-history nil)
+  (setopt undo-tree-auto-save-history nil)
   (add-hook 'after-init-hook 'global-undo-tree-mode))
 
 
@@ -200,7 +212,7 @@ indenting should be done, e.g. when using move-text."
 ;; Yasnippet templating for abbreviation expansion
 (use-package yasnippet
   :config
-  (setq yas-use-menu nil)  ; don't clutter the menu
+  (setopt yas-use-menu nil)  ; don't clutter the menu
   ;(add-hook 'after-init-hook 'yas-global-mode)
   )
 
@@ -210,6 +222,7 @@ indenting should be done, e.g. when using move-text."
 (use-package corfu
   :custom
   (corfu-auto t)
+  (corfu-auto-prefix 2) ; not below 2 (default 3)
   :bind
   (:map corfu-map
         ;("RET" . nil) ; unbind RET, use TAB only
@@ -309,18 +322,18 @@ indenting should be done, e.g. when using move-text."
   ;; Improve register preview for `consult-register',
   ;; `consult-register-load', `consult-register-store' and the Emacs
   ;; built-ins.
-  (setq register-preview-delay 0.5
-        register-preview-function #'consult-register-format)
+  (setopt register-preview-delay 0.5
+          register-preview-function #'consult-register-format)
 
   ;; This adds thin lines, sorting, and hides the mode line of the window.
   (advice-add #'register-preview :override #'consult-register-window)
 
   ;; Use Consult to select xref locations with preview
-  (setq xref-show-xrefs-function #'consult-xref
-        xref-show-definitions-function #'consult-xref)
+  (setopt xref-show-xrefs-function #'consult-xref
+          xref-show-definitions-function #'consult-xref)
 
   :config
-  (setq consult-narrow-key "<")
+  (setopt consult-narrow-key "<")
 
   ;; Delay preview for some commmands (default is immediate update)
   (consult-customize
@@ -405,7 +418,7 @@ indenting should be done, e.g. when using move-text."
   ;; tweak the project identification search order
   ;; to check bottom-up for .git etc only after having checked top-down first
   ;; note:  "bottom-up" = innermost wins, so top-down should mean outermost!
-  (setq projectile-project-root-functions
+  (setopt projectile-project-root-functions
         '(projectile-root-local  ; check if 'projectile-project-root' var already set, e.g. by '.dir-locals.el'
           projectile-root-marked  ; search for '.projectile' marker file ('projectile-dirconfig-file') - innermost wins (defined via projectile-root-bottom-up)
           projectile-root-bottom-up ; search for files in 'projectile-project-root-files-bottom-up' - .git, .hg, etc - innermost wins - PROBLEM: this before project files in default order means .git always wins over pom.xml, mix.exs, etc., even if it's a submodule of a main project

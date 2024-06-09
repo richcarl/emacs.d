@@ -5,6 +5,10 @@
 ;;; Code:
 
 
+;; Plain Text
+(add-hook 'text-mode-hook #'auto-fill-mode)  ; automatic line breaking
+
+
 ;; Yaml
 (use-package yaml-mode)
 

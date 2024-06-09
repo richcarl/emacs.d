@@ -48,6 +48,8 @@ alternative is `LSP Mode', using the function `lsp'."
 (setopt compile-command "make MAKEFLAGS= -k -s -w") ; keep going, don't echo commands, print directories
 (setopt compilation-scroll-output 'first-error)
 (global-set-key (kbd "C-c c") 'recompile)
+(add-hook 'compilation-mode-hook #'visual-line-mode)
+(add-hook 'compilation-minor-mode-hook #'visual-line-mode)
 
 (use-package ansi-color
     :hook (compilation-filter . ansi-color-compilation-filter))
@@ -272,10 +274,11 @@ alternative is `LSP Mode', using the function `lsp'."
 (setopt c-default-style
         '((java-mode . "java")
           (awk-mode . "awk")
-          (other . "linux"))  ; default is gnu (you never do gnu)
+          (other . "linux"))  ; Emacs' default is gnu (you never do gnu)
         )
 (when (or (executable-find "clangd") (executable-find "ccls"))
-  (add-hook 'c-mode-hook #'lsp-launcher))
+  (add-hook 'c-mode-hook #'lsp-launcher)
+  (add-hook 'c-ts-mode-hook #'lsp-launcher))
 
 (use-package cmake-mode)
 
@@ -289,7 +292,11 @@ alternative is `LSP Mode', using the function `lsp'."
   ;;               ("rust-analyzer" :initializationOptions
   ;;                (:check (:command "clippy")))))
   (when (executable-find "rust-analyzer")
-    (add-hook 'rust-mode-hook #'lsp-launcher))
+    (add-hook 'rust-mode-hook #'lsp-launcher)
+    (add-hook 'rust-ts-mode-hook #'lsp-launcher))
+  ;; tramp-remote-path currently only works with Eglot, not LSP
+  (with-eval-after-load "tramp"
+    (add-to-list 'tramp-remote-path "/usr/local/cargo/bin"))
   )
 
 
