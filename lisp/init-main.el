@@ -32,6 +32,7 @@
 ;; Package management
 
 ;; Add MELPA to package archives
+(require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 ;; Set up use-package to automate package installation
