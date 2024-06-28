@@ -1,6 +1,12 @@
 ;;  Emacs early-startup script
 ;; (note that any messages at this stage get printed to the console)
 
+(when (eq system-type 'windows-nt)
+  ;; Emacs JIT seems broken on Windows right now
+  (setq native-comp-jit-compilation nil)
+  (setq native-comp-enable-subr-trampolines nil)
+  )
+
 ;; Don't read system defaults.
 (setopt inhibit-default-init t)
 
