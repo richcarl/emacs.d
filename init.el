@@ -22,10 +22,17 @@
 (when (file-exists-p local-init-file) (load local-init-file))
 
 ;; Use a separate file for Emacs customization (must be explicitly loaded)
+;; since we want to keep the default init.el under source control. If it
+;; doesn't exist already, it will get created by use-package on the first
+;; run to save the value of package-selected-packages (but only if
+;; use-package actually installed something). If package-selected-packages
+;; is not set, package-autoremove will not work; to fix it, just trigger a
+;; reinstall of some package, then copy the newly saved setting from
+;; custom-dump.el (see below) into custom.el.
 (setq custom-file (locate-user-emacs-file "custom.el")) ; use setq for this
 (when (file-exists-p custom-file) (load custom-file))
 
-;; Avoid thrashing your personal custom-file by always saving
+;; Avoid thrashing your personal custom-file by always saving modified
 ;; customizations to a separate file (ignored on restart). Manually move
 ;; settings that you want to keep into your actual custom-file.
 (setq custom-file (expand-file-name "custom-dump.el" user-emacs-directory))

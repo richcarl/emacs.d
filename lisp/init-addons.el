@@ -352,7 +352,7 @@ indenting should be done, e.g. when using move-text."
 
    ;; C-x bindings in `ctl-x-map'
    ("C-x b" . consult-buffer)                ; replaces switch-to-buffer
-   ("C-x C-r" . consult-recent-file)         ; requires recentf-mode
+   ("C-x C-r" . consult-recent-file)         ; requires recentf-mode; replaces find-file-read-only (use C-x 4 r instead)
    ("C-x 4 b" . consult-buffer-other-window) ; replaces switch-to-buffer-other-window
    ("C-x 5 b" . consult-buffer-other-frame)  ; replaces switch-to-buffer-other-frame
    ("C-x t b" . consult-buffer-other-tab)    ; replaces switch-to-buffer-other-tab
