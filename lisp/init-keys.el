@@ -48,8 +48,9 @@
 ;; (increase/decrease text scale get reversed in SE layout, but that's ok;
 ;; also note that since ´` is a dead key pressing C-´ yields just ´)
 (global-set-key (kbd "C-x ´") (function (lambda () (interactive) (text-scale-adjust -1))))
-; this makes US key 6^ work as join-line also in SE keymap (labeled 6&)
+; this makes US key 6^ work as join-line and enlarge-window also in SE keymap (labeled 6&)
 (global-set-key (kbd "M-&") 'delete-indentation)  ; (M-& defaults to async-shell-command)
+(global-set-key (kbd "C-x &") 'enlarge-window)
 ; this makes US key \| work as indent-region also in SE keymap (labeled '*)
 (global-set-key (kbd "C-M-'") 'indent-region)
 
