@@ -51,8 +51,13 @@
 ; this makes US key 6^ work as join-line and enlarge-window also in SE keymap (labeled 6&)
 (global-set-key (kbd "M-&") 'delete-indentation)  ; (M-& defaults to async-shell-command)
 (global-set-key (kbd "C-x &") 'enlarge-window)
-; this makes US key \| work as indent-region also in SE keymap (labeled '*)
+; this makes US key \| work as normal also in SE keymap (labeled '*)
 (global-set-key (kbd "C-M-'") 'indent-region)
+(global-set-key (kbd "M-*") 'shell-command-on-region)
+; dead keys may be made to work with C or M but not with a prefix like C-x
+(global-set-key (kbd "C-<dead-diaeresis>") 'abort-recursive-edit) ; (C-])
+(global-set-key (kbd "M-S-<dead-circumflex>") 'forward-paragraph) ; (M-})
+(global-set-key (kbd "M-Å") 'backward-paragraph) ; (M-{)
 
 ;; Move some US-centric bindings to match SE keyboard legends, mainly + and -
 ;; (in particular, US =+ and ]} are dead keys ´` and ^¨ in SE, so avoid them)
@@ -60,7 +65,6 @@
 (global-set-key (kbd "C-x C-/") 'text-scale-adjust) ; (C-x C--)
 (global-set-key (kbd "C-x -") 'balance-windows) ; (C-x +)
 (global-set-key (kbd "C-x /") 'balance-windows) ; (C-x +)
-
 
 ;; Make C-z and M-z also work as undo
 (global-set-key (kbd "C-z") 'undo)
@@ -95,6 +99,8 @@
 ;; Make delete-horizontal-space cycle through spacings instead, and allow
 ;; pressing \ to keep cycling if repeat-mode is enabled
 (global-set-key [remap delete-horizontal-space] 'cycle-spacing)
+; make US key \| work as cycle-spacing also in SE keymap
+(global-set-key (kbd "M-'") 'cycle-spacing) ; (M-' defaults to abbrev-prefix-mark)
 (defvar-keymap cycle-spacing-repeat-map
   :doc "Keymap to repeat `cycle-spacing' commands.  Used in `repeat-mode'."
   :repeat t

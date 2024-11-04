@@ -182,6 +182,8 @@ indenting should be done, e.g. when using move-text."
   (global-set-key (kbd "C-<") 'multiple-cursors-mark-previous-like-this)
   (global-set-key (kbd "C-c m") 'multiple-cursors-edit-lines)
   (global-set-key (kbd "C-c r") 'set-rectangular-region-anchor)
+  ;; make US key '" work the same in SE layout
+  (global-set-key (kbd "C-ä") 'multiple-cursors-mark-all-dwim)
   (setopt mc/edit-lines-empty-lines 'ignore))
 
 
