@@ -154,6 +154,13 @@ alternative is `LSP Mode', using the function `lsp'."
   ;; Use recommended keys C-x g, C-c g, C-c f
   (setopt magit-define-global-key-bindings 'recommended))
 
+;; Git delta diffs
+(use-package magit-delta
+  :config
+  (when (executable-find "delta")
+    (add-hook 'magit-mode-hook 'magit-delta-mode))
+  )
+
 ;; Git Timemachine
 (use-package git-timemachine
   :bind
