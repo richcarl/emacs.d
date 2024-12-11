@@ -450,6 +450,15 @@ indenting should be done, e.g. when using move-text."
   ("C-c e" . treemacs)
   )
 
+
+;; Zen mode
+(use-package writeroom-mode
+  :config
+  :bind
+  ("C-c z" . writeroom-mode)
+  )
+
+
 (use-package treemacs-projectile)  ; additional integration with projectile
 
 

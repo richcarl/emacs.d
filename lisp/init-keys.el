@@ -85,7 +85,6 @@
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 (global-set-key (kbd "C-c a") 'align-current)
 (global-set-key (kbd "C-c d") 'picture-mode)  ; "draw"
-(global-set-key (kbd "C-c z") 'toggle-frame-fullscreen) ; better than F11
 
 
 ;; Bind duplicate-dwim to a key and configure repeat mode for it
