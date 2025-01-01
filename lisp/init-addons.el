@@ -177,13 +177,14 @@ indenting should be done, e.g. when using move-text."
   (defalias 'multiple-cursors-mark-previous-like-this 'mc/mark-previous-like-this)
   (defalias 'multiple-cursors-edit-lines 'mc/edit-lines)
   ;; note that C-' is also used by mc to hide/show unmatched lines
-  (global-set-key (kbd "C-'") 'multiple-cursors-mark-all-dwim)
-  (global-set-key (kbd "C->") 'multiple-cursors-mark-next-like-this)
-  (global-set-key (kbd "C-<") 'multiple-cursors-mark-previous-like-this)
-  (global-set-key (kbd "C-c m") 'multiple-cursors-edit-lines)
+  (global-set-key (kbd "C-'") 'mc/mark-all-dwim)
+  (global-set-key (kbd "M-<down>") 'mc/mark-next-like-this)
+  (global-set-key (kbd "M-<up>") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-c l") 'mc/edit-ends-of-lines)
+  (global-set-key (kbd "C-c m") 'mc/edit-lines)
   (global-set-key (kbd "C-c r") 'set-rectangular-region-anchor)
   ;; make US key '" work the same in SE layout
-  (global-set-key (kbd "C-ä") 'multiple-cursors-mark-all-dwim)
+  (global-set-key (kbd "C-ä") 'mc/mark-all-dwim)
   (setopt mc/edit-lines-empty-lines 'ignore))
 
 

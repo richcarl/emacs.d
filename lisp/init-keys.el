@@ -88,11 +88,11 @@
 
 
 ;; Bind duplicate-dwim to a key and configure repeat mode for it
-(global-set-key (kbd "C-x j") 'duplicate-dwim)
+(global-set-key (kbd "C-l") 'duplicate-dwim)
 (defvar-keymap duplicate-dwim-repeat-map
   :doc "Keymap to repeat `duplicate-dwim'.  Used in `repeat-mode'."
   :repeat t
-  "j" #'duplicate-dwim)
+  "l" #'duplicate-dwim)
 
 
 ;; Make delete-horizontal-space cycle through spacings instead, and allow
