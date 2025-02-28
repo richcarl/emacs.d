@@ -21,6 +21,7 @@
 (setopt help-window-select t)  ; jump to the help window when it pops up
 (setopt even-window-sizes nil) ; don't resize windows willy-nilly
 (setopt initial-major-mode 'text-mode)  ; sane default for the scratch buffer
+(setopt wdired-allow-to-change-permissions t)
 
 ;; Fix default behaviour when Emacs wants to show a buffer (e.g. Help).
 ;; First try to reuse an existing window for that buffer; if none exists, pop

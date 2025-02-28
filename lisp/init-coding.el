@@ -284,6 +284,8 @@ alternative is `LSP Mode', using the function `lsp'."
           (other . "linux"))  ; Emacs' default is gnu (you never do gnu)
         )
 (when (or (executable-find "clangd") (executable-find "ccls"))
+  (add-hook 'c++-mode-hook #'lsp-launcher)
+  (add-hook 'c++-ts-mode-hook #'lsp-launcher)
   (add-hook 'c-mode-hook #'lsp-launcher)
   (add-hook 'c-ts-mode-hook #'lsp-launcher))
 
