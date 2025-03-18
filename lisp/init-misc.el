@@ -17,13 +17,12 @@ nulla pariatur. Excepteur sint occaecat cupidatat non proident,
 sunt in culpa qui officia deserunt mollit anim id est laborum.")
 )
 
-
+;; Sonic Pi
 ;(require 'sonic-pi)  ; not use-package, for now - not compatible with recent v.
 (add-to-list 'auto-mode-alist '("\\.spi\\'" . sonic-pi-mode))
-;; Set the paths per installation in your init-preload-local.el instead
+;; Set these paths per installation in your init-preload-local.el instead:
 ;(setq sonic-pi-path "~/SONIC-PI-INSTALL-DIR/") ; Must end with "/"
 ;(add-to-list 'load-path "~/.emacs.d/site-lisp/sonic-pi-mode")
-
 
 (provide 'init-misc)
 ;;; init-misc.el ends here
