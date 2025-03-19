@@ -248,7 +248,7 @@ indenting should be done, e.g. when using move-text."
   ; (setq vertico-resize t)
   ; (setq vertico-cycle t) ; cycle vertico-next/vertico-previous
   (vertico-multiform-mode) ; enable switching layout (M-G, M-B, M-F, M-V, ...)
-  (vertico-mode))
+  (add-hook 'after-init-hook 'vertico-mode))
 
 
 ;; Enable rich annotations using the Marginalia package

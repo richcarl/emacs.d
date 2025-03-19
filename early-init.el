@@ -1,6 +1,15 @@
 ;;  Emacs early-startup script
 ;; (note that any messages at this stage get printed to the console)
 
+;; keep GC at a minimum during startup, restore as last point after init
+(setq gc-cons-threshold most-positive-fixnum)
+;(profiler-start 'cpu) ; uncomment to profile, run profiler-report after
+(add-hook 'after-init-hook
+          (function (lambda ()
+                      ;(profiler-stop) ; uncomment to profile startup
+                      (setq gc-cons-threshold (car (get 'gc-cons-threshold 'standard-value)))
+                      )))
+
 (when (eq system-type 'windows-nt)
   ;; Emacs JIT seems broken on Windows right now
   (setq native-comp-jit-compilation nil)
