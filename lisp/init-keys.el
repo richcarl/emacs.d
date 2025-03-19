@@ -79,6 +79,10 @@
 ;; Other useful custom key bindings (keep it short)
 (global-set-key (kbd "M-n") 'forward-to-indentation)
 (global-set-key (kbd "M-p") 'backward-to-indentation)
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>") 'shrink-window)
+(global-set-key (kbd "S-C-<up>") 'enlarge-window)
 (global-set-key (kbd "C-c a") 'align-current)
 (global-set-key (kbd "C-c d") 'picture-mode)  ; "draw"
 
