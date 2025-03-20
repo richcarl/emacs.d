@@ -19,4 +19,5 @@
 ;(setq sonic-pi-compile-extensions-bin "server/ruby/bin/compile-extensions.rb")
 
 ; read ELP settings (Erlang Language Platform) if present
-(when (file-exists-p "site-lisp/elp-config.el") (load "elp-config"))
+(setq elp-config-file (locate-user-emacs-file "site-lisp/elp-config.el"))
+(when (file-exists-p elp-config-file) (load "elp-config"))
