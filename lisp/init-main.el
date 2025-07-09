@@ -63,9 +63,9 @@
 (require 'init-coding)
 (require 'init-misc)
 
-;; Enable direnv mode last of all
-(use-package envrc
-  :hook (after-init . envrc-global-mode))
+;; Enable mise last of all (replaces envrc)
+(use-package mise
+  :hook (after-init . global-mise-mode))
 
 (provide 'init-main)
 ;;; init-main.el ends here
