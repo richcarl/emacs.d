@@ -9,6 +9,7 @@
 /.last-package-update-day
 /.lsp-session-v1
 /.mc-lists.el
+/eln-cache
 /bookmarks
 /elpa
 /multisession

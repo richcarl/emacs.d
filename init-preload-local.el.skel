@@ -1,7 +1,13 @@
 ;;  Local settings (applied before loading main setup)
 
+;; Set your name explicitly since some environments like WSL define $NAME
+(setopt user-full-name "Your Name Here (defined in init-local.el)")
+
+(setopt user-mail-address "user@example.com")
+(setopt mail-host-address "example.com")
+
+;(setopt printer-name "//localhost/Canon S330")
+
 ;(add-to-list 'load-path "~/src/erl/wrangler/elisp")
-;; add distel *after* wrangler to override the distel version in wrangler
-;(add-to-list 'load-path "~/src/erl/distel/elisp")
 
 ;(add-to-list 'load-path "~/src/elisp/sonic-pi-mode")
