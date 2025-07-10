@@ -116,12 +116,13 @@
 Either resizes by prefix arg WIDTH or by doubling or halving the
 current size depending on the current width."
   (interactive "P")
-  (if window-system
+  (if (display-graphic-p)
       (let ((current (frame-width)))
         (set-frame-width (selected-frame)
                          ;; don't halve unless result is wide enough
                          (or width (if (< current 112) (* current 2)
                                      (/ current 2)))))
+    ;; else
     (error "Cannot resize frame horizontally: is a text terminal")))
 (global-set-key (kbd "C-c w") 'change-frame-width)
 

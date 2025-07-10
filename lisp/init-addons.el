@@ -147,14 +147,16 @@ indenting should be done, e.g. when using move-text."
   :type 'list)
 (defun indent-region-advice (&rest ignored)
   "Auto indents region after moving text"
-  (if (and (not (member major-mode auto-indent-ignore-modes))
-           (or (member major-mode auto-indent-extra-modes)
-               (derived-mode-p 'prog-mode)))
-      (let ((deactivate deactivate-mark))
-        (if (region-active-p)
-            (indent-region (region-beginning) (region-end))
-          (indent-region (line-beginning-position) (line-end-position)))
-        (setq deactivate-mark deactivate))
+  (when (and (not (member major-mode auto-indent-ignore-modes))
+             (or (member major-mode auto-indent-extra-modes)
+                 (derived-mode-p 'prog-mode)))
+    (let ((deactivate deactivate-mark))
+      (if (region-active-p)
+          (indent-region (region-beginning) (region-end))
+        ;; else
+        (indent-region (line-beginning-position) (line-end-position))
+        )
+      (setq deactivate-mark deactivate))
     ))
 (use-package move-text
   :config

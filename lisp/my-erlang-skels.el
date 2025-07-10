@@ -24,6 +24,7 @@
   (if (boundp '*copyright-organization*)
       '(& "%% @copyright (C) " (format-time-string "%Y") ", "
           *copyright-organization*  n)
+    ;; else
       '(& "%% @copyright (C) " (format-time-string "%Y") ", "
           (user-full-name)  n)))
 
