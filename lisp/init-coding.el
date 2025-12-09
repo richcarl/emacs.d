@@ -17,16 +17,6 @@ alternative is `LSP Mode', using the function `lsp'."
   (funcall lsp-client-start))
 
 
-;; Tree-sitter automatic mode and grammar management
-(use-package treesit-auto
-  :custom
-  (treesit-auto-install 'prompt)
-  :config
-  (treesit-auto-add-to-auto-mode-alist 'all)
-  (global-treesit-auto-mode)
-)
-
-
 ;; Eldoc configuration
 (require 'eldoc)
 ;; combine doc texts instead of showing only one; start displaying immediately
