@@ -53,7 +53,7 @@
 
 ;; Text editing
 (setopt sentence-end-double-space nil)
-(setopt fill-column 75)
+(setopt fill-column 72)  ; 72 is the recommended limit for commit messages
 
 ;; TAB behaviour (indentation and completion)
 (setopt indent-tabs-mode nil)   ; don't insert tab characters
