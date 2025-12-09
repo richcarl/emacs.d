@@ -52,6 +52,7 @@
   (setopt auto-package-update-delete-old-versions t)
   (setopt auto-package-update-hide-results t)
   (setopt auto-package-update-interval 14)
+  (setopt auto-package-update-prompt-before-update t)
   (auto-package-update-maybe))
 
 
