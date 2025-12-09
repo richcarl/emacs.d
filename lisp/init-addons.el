@@ -230,7 +230,7 @@ indenting should be done, e.g. when using move-text."
   (corfu-auto-prefix 2) ; not below 2 (default 3)
   :bind
   (:map corfu-map
-        ;("RET" . nil) ; unbind RET, use TAB only
+        ("RET" . nil) ; unbind RET, use TAB only
         ("S-SPC" . corfu-insert-separator)  ; M-SPC may be in use by the OS
         ;("SPC" . corfu-insert-separator)  ; doesn't work well with auto
         )
