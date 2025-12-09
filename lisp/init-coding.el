@@ -42,6 +42,17 @@ alternative is `LSP Mode', using the function `lsp'."
 ;; allow resizing message area up to a certain limit
 (setopt eldoc-echo-area-use-multiline-p 5)
 
+;; eldoc in popup boxes
+(use-package eldoc-box
+  :config
+  (add-hook 'eglot-managed-mode-hook #'eldoc-box-mouse-mode t)
+  (add-hook 'emacs-lisp-mode-hook #'eldoc-box-mouse-mode)
+)
+
+
+;; ELisp
+(add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
+
 
 ;; Compilation
 
