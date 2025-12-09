@@ -22,11 +22,11 @@
 ;; Start Emacs server after initialization is complete
 (when (display-graphic-p)
     (require 'server)
-    ;;(setopt server-temp-file-regexp "/tmp/.+")
-    ;;(setopt server-window (car (frame-list)))
-    (add-hook 'after-init-hook
-              (function (lambda () (unless (server-running-p) (server-start))
-                          )))
+    ;; (setopt server-temp-file-regexp "/tmp/.+")
+    ;; (setopt server-window (car (frame-list)))
+    ;; (add-hook 'after-init-hook
+    ;;           (function (lambda () (unless (server-running-p) (server-start))
+    ;;                       )))
   )
 
 
