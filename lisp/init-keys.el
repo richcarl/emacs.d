@@ -40,8 +40,13 @@
 ;; Make SE keyboard use same physical keys as US layout for some things
 ;; (only use M-- for negative-argument, since we remap C-- to undo)
 ;; this makes US key /? work as the main undo key also in SE keymap (labeled -_)
-(global-set-key (kbd "C--") 'undo)       ; (C-- defaults to negative-argument)
-(global-set-key (kbd "C-_") 'undo-redo)  ; (C-_ defaults to undo)
+(when (display-graphic-p)
+  ;; if running in a terminal, we shouldn't remap Ctrl combinations that
+  ;; may already have been translated by the terminal, like C-_ which could
+  ;; have come from C-/ or C--, so we only do these on a graphics display:
+  (global-set-key (kbd "C-_") 'undo-redo)  ; (C-_ defaults to undo)
+  (global-set-key (kbd "C--") 'undo)       ; (C-- defaults to negative-argument)
+  )
 ; this makes US key - work as negative-argument also in SE keymap (labeled +)
 (global-set-key (kbd "M-+") 'negative-argument)
 ;; this makes keys labeled + or - work for text scale in both SE and US

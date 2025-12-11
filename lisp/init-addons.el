@@ -114,10 +114,14 @@
 ;; Undo-tree mode for improved undo/redo
 (use-package undo-tree
   :config
-  ;; undo-tree already uses mainly /? for undo/redo, so we only need to ensure
-  ;; that the rest of our normal remappings (see above) work also in undo-tree
-  (define-key undo-tree-map (kbd "C--") 'undo-tree-undo)
-  (define-key undo-tree-map (kbd "C-_") 'undo-tree-redo)
+  ;; undo-tree already uses mainly /? for undo/redo, so we only need to
+  ;; ensure that the rest of our normal remappings (see init-keys.el) also
+  ;; work in undo-tree
+  (when (display-graphic-p)
+    ;; terminals may remap C-/ to C-_ so only do this on graphics displays
+    (define-key undo-tree-map (kbd "C-_") 'undo-tree-redo)
+    (define-key undo-tree-map (kbd "C--") 'undo-tree-undo)
+    )
   (define-key undo-tree-map (kbd "C-z") 'undo-tree-undo)
   (define-key undo-tree-map (kbd "M-z") 'undo-tree-undo)
   (define-key undo-tree-map (kbd "S-C-z") 'undo-tree-redo)
