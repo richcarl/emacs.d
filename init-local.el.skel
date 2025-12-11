@@ -10,7 +10,3 @@
 ;(setq sonic-pi-path "~/.sonic-pi/install/") ; Must end with "/"
 ;(setq sonic-pi-server-bin             "server/ruby/bin/spider-server.rb")
 ;(setq sonic-pi-compile-extensions-bin "server/ruby/bin/compile-extensions.rb")
-
-; read ELP settings (Erlang Language Platform) if present
-(setq elp-config-file (locate-user-emacs-file "site-lisp/elp-config.el"))
-(when (file-exists-p elp-config-file) (load "elp-config"))
