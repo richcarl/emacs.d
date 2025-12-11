@@ -65,7 +65,6 @@ alternative is `LSP Mode', using the function `lsp'."
          eglot-mode-map
          ("<mouse-2>" . eglot-code-actions-at-mouse)
          ("C-c c a" . eglot-code-actions)
-         ("C-c c a" . eglot-code-actions)
          ("C-c c q" . eglot-code-action-quickfix)
          ("C-c c w" . eglot-code-action-rewrite)
          ("C-c c x" . eglot-code-action-extract)
@@ -255,8 +254,26 @@ alternative is `LSP Mode', using the function `lsp'."
                                  ))
       ;; pass ELP configuration flags via eglot default workspace config
       (setq-default eglot-workspace-configuration
-                    (plist-put eglot-workspace-configuration
-                               ':elp '(:signatureHelp (:enable t))))
+                    ;; Run `elp config' to see what options can be used
+                    ;; here. Use `eglot-show-workspace-configuration' to
+                    ;; see what is sent.
+                    '(:elp ( :diagnostics (:enableOtp t)
+                             :edoc (:enable t)
+                             ;:eqwalizer (:all t) ; default off
+                             ;:highlightDynamic (:enable t)
+                             :hoverActions ( :enable t
+                                             :docLinks (:enable t) )
+                             :inlayHints (:parameterHints (:enable t)) ; default on
+                             :lens ( :enable t
+                                     :debug (:enable t)
+                                     :links (:enable t)
+                                     :run ( :enable t
+                                            :interactive (:enable t) )
+                                     )
+                             ;:signatureHelp (:enable nil) ; default on
+                             ;:typesOnHover (:enable t)
+                             ))
+                    )
       ;; settings for using ELP with lsp-mode
       (lsp-register-client
        (make-lsp-client :new-connection (lsp-stdio-connection '("elp" "server"))
