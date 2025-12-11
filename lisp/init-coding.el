@@ -60,6 +60,18 @@ alternative is `LSP Mode', using the function `lsp'."
 
 ;; Eglot (the default language server client)
 (use-package eglot
+  :bind (
+         :map
+         eglot-mode-map
+         ("<mouse-2>" . eglot-code-actions-at-mouse)
+         ("C-c c a" . eglot-code-actions)
+         ("C-c c a" . eglot-code-actions)
+         ("C-c c q" . eglot-code-action-quickfix)
+         ("C-c c w" . eglot-code-action-rewrite)
+         ("C-c c x" . eglot-code-action-extract)
+         ("C-c c i" . eglot-code-action-inline)
+         ("C-c c r" . eglot-rename)
+         ("C-c c f" . eglot-format))
   :config
   (setopt eglot-report-progress nil) ; don't be so noisy
   (add-hook 'eglot-managed-mode-hook
