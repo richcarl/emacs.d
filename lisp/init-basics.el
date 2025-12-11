@@ -49,6 +49,7 @@
 (setopt scroll-margin 2)
 
 ;; Mouse
+(context-menu-mode 1)  ; right click for context menu (default mouse-save-then-kill)
 (setopt mouse-yank-at-point t)  ; don't move point on mouse-yank
 
 ;; Text editing
