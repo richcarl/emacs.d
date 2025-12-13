@@ -5,6 +5,11 @@
 ;;; Code:
 
 
+;; Projects
+
+(setq project-vc-extra-root-markers projectile-project-root-files)
+
+
 ;; Make our standard LSP client customizable
 (defcustom lsp-client-start #'eglot-ensure
   "Command to launch the standard LSP client. By default this launches the
@@ -79,10 +84,9 @@ alternative is `LSP Mode', using the function `lsp'."
                ;; show all doc texts, and as soon as possible
                ;; (the hook is needed because eglot overrides the global
                ;; setting, changing it to eldoc-documentation-compose)
-               (setopt eldoc-documentation-strategy
+            (setopt eldoc-documentation-strategy
                        #'eldoc-documentation-compose-eagerly))))
   )
-
 
 ;; LSP mode (more bells and whistles than the built-in Eglot)
 (defun lsp-completion-mode-orderless ()
@@ -93,7 +97,7 @@ alternative is `LSP Mode', using the function `lsp'."
 (use-package lsp-mode
   :init
   ;; customize prefix for LSP keybindings (must happen before loading lsp-mode)
-  (setopt lsp-keymap-prefix "C-l")
+  (setopt lsp-keymap-prefix "S-C-l")
   :config
   (setopt lsp-completion-provider :none)  ; tries to use Company otherwise
   ;; most of these are on by default, but we list them all for easy tweaking
@@ -313,6 +317,8 @@ alternative is `LSP Mode', using the function `lsp'."
           (awk-mode . "awk")
           (other . "linux"))  ; Emacs' default is gnu (you never do gnu)
         )
+(setopt c-ts-mode-indent-style 'linux)
+(setopt c-ts-mode-indent-offset 4)
 (when (or (executable-find "clangd") (executable-find "ccls"))
   (add-hook 'c++-mode-hook #'lsp-launcher)
   (add-hook 'c++-ts-mode-hook #'lsp-launcher)
@@ -365,7 +371,8 @@ alternative is `LSP Mode', using the function `lsp'."
 
 ;; Assembler
 ;; Emacs builtin asm-mode recognizes only .asm and .s or .S by defaults
-(add-to-list 'auto-mode-alist '("\\.z80\\'" . asm-mode))
+;; (note: the suffix '.z80' is reserved for Z80 emulator snapshot files)
+;(add-to-list 'auto-mode-alist '("\\.i\\'" . asm-mode))
 
 
 ;; Lua
