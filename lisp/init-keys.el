@@ -88,6 +88,8 @@
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
+(global-set-key (kbd "C-c <up>") 'maximize-window)
+(global-set-key (kbd "C-c <down>") 'fit-window-to-buffer)
 (global-set-key (kbd "C-c a") 'align-current)
 (global-set-key (kbd "C-c d") 'picture-mode)  ; "draw"
 

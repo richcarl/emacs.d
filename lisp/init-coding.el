@@ -53,7 +53,7 @@ alternative is `LSP Mode', using the function `lsp'."
 
 (setopt compile-command "make MAKEFLAGS= -k -s -w") ; keep going, don't echo commands, print directories
 (setopt compilation-scroll-output 'first-error)
-(global-set-key (kbd "C-c c") 'recompile)
+(global-set-key (kbd "C-c m") 'recompile)
 (add-hook 'compilation-mode-hook #'visual-line-mode)
 (add-hook 'compilation-minor-mode-hook #'visual-line-mode)
 
@@ -236,6 +236,7 @@ alternative is `LSP Mode', using the function `lsp'."
   :config
   ;; kill Erlang mode's use of important keys like M-+
   (define-key erlang-mode-map (kbd "M-+") nil)
+  (define-key erlang-mode-map (kbd "C-c C-k") nil)
   ;; let source files specify their indentation
   (add-to-list 'safe-local-variable-values '(erlang-indent-level . 2))
   ;; for running standalone Flycheck on Erlang when Eglot/LSP is not enabled

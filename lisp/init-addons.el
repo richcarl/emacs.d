@@ -176,8 +176,7 @@ indenting should be done, e.g. when using move-text."
   (global-set-key (kbd "C-'") 'mc/mark-all-dwim)
   (global-set-key (kbd "M-<down>") 'mc/mark-next-like-this)
   (global-set-key (kbd "M-<up>") 'mc/mark-previous-like-this)
-  (global-set-key (kbd "C-c l") 'mc/edit-ends-of-lines)
-  (global-set-key (kbd "C-c m") 'mc/edit-lines)
+  (global-set-key (kbd "C-c l") 'mc/edit-lines)
   (global-set-key (kbd "C-c r") 'set-rectangular-region-anchor)
   ;; make US key '" work the same in SE layout
   (global-set-key (kbd "C-ä") 'mc/mark-all-dwim)
@@ -334,13 +333,12 @@ indenting should be done, e.g. when using move-text."
   :config
   (setopt consult-narrow-key "<")
 
-  ;; Delay preview for some commmands (default is immediate update)
+  ;; Delay preview where it may be expensive (default is immediate)
   (consult-customize
-   consult-ripgrep consult-git-grep consult-grep
+   consult-ripgrep consult-git-grep
    consult-bookmark consult-recent-file consult-xref
-   consult--source-bookmark consult--source-file-register
-   consult--source-recent-file consult--source-project-recent-file
-   :preview-key '(:debounce 0.4 any))
+   :preview-key '(:debounce 0.4 any)) ;; Option 1: Delay preview
+   ;; :preview-key "M-."              ;; Option 2: Manual preview
 
   :bind
   (
