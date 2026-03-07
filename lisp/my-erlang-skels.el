@@ -16,20 +16,17 @@
   (let ((percent (or percent 2)))
     (concat (make-string percent ?%)
             " "
-            (make-string (- 71 percent) ?=)
+            (make-string (- 76 percent) ?=)
             "\n")))
 
 ; I prefer file level comments to begin with %%, not %%%
 (setq erlang-skel-copyright-comment
   (if (boundp '*copyright-organization*)
-      '(& "%% @copyright (C) " (format-time-string "%Y") ", "
+      '(& "%% Copyright " (format-time-string "%Y") ", "
           *copyright-organization*  n)
     ;; else
-      '(& "%% @copyright (C) " (format-time-string "%Y") ", "
-          (user-full-name)  n)))
-
-(setq erlang-skel-author-comment
-  '(& "%% @author " (user-full-name) " <" erlang-skel-mail-address ">" n))
+      '(& "%% Copyright " (format-time-string "%Y") ", "
+          (user-full-name) " <" erlang-skel-mail-address ">" n)))
 
 (setq erlang-skel-lgpl-comment
       '("%% This library is free software; you can redistribute it and/or modify" n
@@ -67,10 +64,11 @@
 
 ;; Always add doc and export to the module, but no vsn
 (setq erlang-skel-small-header
-  '(o "%% @doc" n n
-      (erlang-skel-include erlang-skel-module)
+  '(o (erlang-skel-include erlang-skel-module)
+      "-moduledoc \"\"\"" n "\"\"\"." n
       n
       "-include_lib(\"eunit/include/eunit.hrl\")." n
+      "-compile([export_all, nowarn_export_all])." n
       n
       (erlang-skel-include erlang-skel-export)
       n)
@@ -79,17 +77,17 @@
 ;; Add a leading separator line, but skip the created-comment
 (setq erlang-skel-normal-header
   '(o (my-erlang-skel-double-separator)
-      (erlang-skel-include erlang-skel-author-comment)
       (erlang-skel-include erlang-skel-copyright-comment)
-      (erlang-skel-include erlang-skel-small-header) n)
+      n
+      (erlang-skel-include erlang-skel-small-header))
   )
 
 ;; Add a leading separator line, but skip the created-comment
 (setq erlang-skel-large-header
   '(o (my-erlang-skel-double-separator)
-      (erlang-skel-include erlang-skel-license-comment)
-      "%% " n
-      (erlang-skel-include erlang-skel-author-comment)
       (erlang-skel-include erlang-skel-copyright-comment)
-      (erlang-skel-include erlang-skel-small-header) )
+      "%%" n
+      (erlang-skel-include erlang-skel-license-comment)
+      n
+      (erlang-skel-include erlang-skel-small-header))
   )
