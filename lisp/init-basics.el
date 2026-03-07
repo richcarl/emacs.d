@@ -54,7 +54,7 @@
 
 ;; Text editing
 (setopt sentence-end-double-space nil)
-(setopt fill-column 72)  ; 72 is the recommended limit for commit messages
+(setopt fill-column 79)  ; leave a small right margin on 80 col width
 
 ;; TAB behaviour (indentation and completion)
 (setopt indent-tabs-mode nil)   ; don't insert tab characters
