@@ -560,5 +560,43 @@ indenting should be done, e.g. when using move-text."
 ;  :init
 ;  (meow-tree-sitter-register-defaults))
 
+;; Display information on the side
+(use-package sideline
+  :init
+  (setq
+   ;sideline-backends-left-skip-current-line t   ; don't display on current line (left)
+   ;sideline-backends-right-skip-current-line t  ; don't display on current line (right)
+   ;sideline-order-left 'down                    ; or 'up
+   ;sideline-order-right 'up                     ; or 'down
+   ;sideline-format-left "%s   "                 ; format for left aligment
+   ;sideline-format-right "   %s"                ; format for right aligment
+   ;sideline-priority 100                        ; overlays' priority
+   ;sideline-display-backend-name t              ; display the backend name
+   )
+  (setq sideline-delay 0.5)
+  (add-hook 'after-init-hook 'global-sideline-mode)
+  )
+
+(use-package sideline-eglot
+  :init
+  (setq sideline-backends-right '(sideline-eglot))
+  :hook
+  (eglot-mode . sideline-mode)
+  )
+
+;; (use-package sideline-flycheck
+;;   :init
+;;   (setq sideline-backends-right '(sideline-flycheck))
+;;   :hook
+;;   (flycheck-mode . sideline-mode)
+;;   (flycheck-mode . sideline-flycheck-setup)
+;;   )
+
+;; (use-package sideline-blame
+;;   :init
+;;   (setq sideline-backends-left '((sideline-blame . down)))
+;;   )
+
+
 (provide 'init-addons)
 ;;; init-addons.el ends here
