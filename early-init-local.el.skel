@@ -4,8 +4,20 @@
 
 ;; local modifications to the basic settings done in early-init.el
 (modify-all-frames-parameters
- '(;(width . 86)
+ '(
+   ;(width . 86)
    ;(height . 42)
    ;(vertical-scroll-bars . nil)  ; right, left, or nil
    ;(tool-bar-lines . 0)  ; 0 disables
    ))
+
+;;
+;; Local settings that need to be applied before main setup
+;;
+
+;; Must set this since some environments like WSL define $NAME
+(setopt user-full-name "Your Name Here")
+
+(setopt user-mail-address "your.name@example.org")
+;(setopt mail-host-address "example.com")
+;(setopt printer-name "//localhost/Canon S330")

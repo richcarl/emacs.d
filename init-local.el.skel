@@ -1,10 +1,6 @@
 ;; Local settings (applied after loading main setup)
 
-;(setq erlang-root-dir "~/src/erl/otp")
-;(add-to-list 'exec-path "~/src/erl/otp/bin")
-
 ;(setopt fill-column 79)
-;(setopt indent-tabs-mode nil)
 
 ;; spaces in the path don't work here - set up a link if necessary
 ;(setq sonic-pi-path "~/.sonic-pi/install/") ; Must end with "/"
