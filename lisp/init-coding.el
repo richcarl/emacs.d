@@ -168,7 +168,10 @@ alternative is `LSP Mode', using the function `lsp'."
 (use-package magit
   :config
   ;; Use recommended keys C-x g, C-c g, C-c f
-  (setopt magit-define-global-key-bindings 'recommended))
+  (setopt magit-define-global-key-bindings 'recommended)
+  ;; 72 is the recommended line width for commit messages
+  (add-hook 'git-commit-mode-hook (lambda () (setq fill-column 72)))
+  )
 
 ;; Git delta diffs
 (use-package magit-delta
