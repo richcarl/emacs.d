@@ -37,6 +37,7 @@
   (add-to-list 'eat-semi-char-non-bound-keys [?\e ?g]) ;M-g for misc gotos
   (eat-update-semi-char-mode-map)
   (eat-reload) ; necessary
+  (define-key eat-mode-map (kbd "C-c C-r") #'eat-reset)
   )
 
 
@@ -298,7 +299,7 @@ indenting should be done, e.g. when using move-text."
                  nil
                  (window-parameters (mode-line-format . none))))
 
-  ;; Custom actions
+  ;; Embark actions
   (define-key embark-file-map (kbd "f") #'consult-fd)
   (define-key embark-identifier-map (kbd "g") #'consult-ripgrep)
   (define-key embark-identifier-map (kbd "G") #'consult-git-grep)
@@ -445,6 +446,7 @@ indenting should be done, e.g. when using move-text."
   ("C-c e" . treemacs)
   )
 
+(use-package treemacs-projectile)  ; additional integration with projectile
 
 ;; Zen mode
 (use-package writeroom-mode
@@ -453,9 +455,110 @@ indenting should be done, e.g. when using move-text."
   ("C-c z" . writeroom-mode)
   )
 
+;; Meow
+(use-package meow
+  :config
+  ;; based on standard qwerty example keybindings
+  (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
+  ;; make meow-undo not cancel selection, like normal Emacs undo
+  (defun meow-undo ()
+    "Cancel current selection then undo."
+    (interactive)
+    (meow--execute-kbd-macro meow--kbd-undo))
+  (meow-motion-define-key
+   '("j" . meow-next)
+   '("k" . meow-prev)
+   '("<escape>" . ignore))
+  (meow-leader-define-key
+   ;; Use SPC (0-9) for digit arguments.
+   '("1" . meow-digit-argument)
+   '("2" . meow-digit-argument)
+   '("3" . meow-digit-argument)
+   '("4" . meow-digit-argument)
+   '("5" . meow-digit-argument)
+   '("6" . meow-digit-argument)
+   '("7" . meow-digit-argument)
+   '("8" . meow-digit-argument)
+   '("9" . meow-digit-argument)
+   '("0" . meow-digit-argument)
+   '("/" . meow-keypad-describe-key)
+   '("?" . meow-cheatsheet))
+  (meow-normal-define-key
+   '("0" . meow-expand-0)
+   '("9" . meow-expand-9)
+   '("8" . meow-expand-8)
+   '("7" . meow-expand-7)
+   '("6" . meow-expand-6)
+   '("5" . meow-expand-5)
+   '("4" . meow-expand-4)
+   '("3" . meow-expand-3)
+   '("2" . meow-expand-2)
+   '("1" . meow-expand-1)
+   '("-" . negative-argument)
+   '(";" . meow-reverse)
+   '("," . meow-inner-of-thing)
+   '("." . meow-bounds-of-thing)
+   '("[" . meow-beginning-of-thing)
+   '("]" . meow-end-of-thing)
+   '("a" . meow-append)
+   '("A" . meow-open-below)
+   '("b" . meow-back-word)
+   '("B" . meow-back-symbol)
+   '("c" . meow-change)
+   '("d" . meow-delete)
+   '("D" . meow-backward-delete)
+   '("e" . meow-next-word)
+   '("E" . meow-next-symbol)
+   '("f" . meow-find)
+   '("g" . meow-cancel-selection)
+   '("G" . meow-grab)
+   '("h" . meow-left)
+   '("H" . meow-left-expand)
+   '("i" . meow-insert)
+   '("I" . meow-open-above)
+   '("j" . meow-next)
+   '("J" . meow-next-expand)
+   '("k" . meow-prev)
+   '("K" . meow-prev-expand)
+   '("l" . meow-right)
+   '("L" . meow-right-expand)
+   '("m" . meow-join)
+   '("n" . meow-search)
+   '("o" . meow-block)
+   '("O" . meow-to-block)
+   '("p" . meow-yank)
+   ;'("q" . meow-quit) ; very easy to accidentally close window
+   '("Q" . meow-goto-line)
+   '("r" . meow-replace)
+   '("R" . meow-swap-grab)
+   '("s" . meow-kill)
+   '("t" . meow-till)
+   '("u" . undo-tree-undo) ; instead of meow-undo (which cancels selection)
+   '("U" . undo-tree-redo) ; instead of meow-undo-in-selection
+   '("v" . meow-visit)
+   '("w" . meow-mark-word)
+   '("W" . meow-mark-symbol)
+   '("x" . meow-line)
+   '("X" . meow-goto-line)
+   '("y" . meow-save)
+   '("Y" . meow-sync-grab)
+   '("z" . meow-pop-selection)
+   '("'" . repeat)
+   '("<escape>" . ignore))
+  :custom
+  (meow-mode-state-list
+   '((conf-mode . insert)
+     (fundamental-mode . insert)
+     (help-mode . normal)
+     (prog-mode . insert)
+     (text-mode . insert)))
+  :init
+  (meow-global-mode 0)
+  )
 
-(use-package treemacs-projectile)  ; additional integration with projectile
-
+;(use-package meow-tree-sitter
+;  :init
+;  (meow-tree-sitter-register-defaults))
 
 (provide 'init-addons)
 ;;; init-addons.el ends here
