@@ -191,6 +191,16 @@ indenting should be done, e.g. when using move-text."
 ;  (global-set-key (kbd "C-r") 'phi-search-backward))
 
 
+;; Make ibuffer group by VC project
+(use-package ibuffer-vc
+  :config
+  (add-hook 'ibuffer-hook
+            (lambda ()
+              (ibuffer-vc-set-filter-groups-by-vc-root)
+              (unless (eq ibuffer-sorting-mode 'alphabetic)
+                (ibuffer-do-sort-by-alphabetic)))))
+
+
 ;; Enable editing in grep buffers
 ;; (For consult searches, use embark-export to get a grep buffer to edit,
 ;; then use C-c C-p to launch wgrep-mode)

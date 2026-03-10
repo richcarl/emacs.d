@@ -101,6 +101,8 @@
   :repeat t
   "l" #'duplicate-dwim)
 
+;; Use ibuffer instead of list-buffers
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; Make delete-horizontal-space cycle through spacings instead, and allow
 ;; pressing \ to keep cycling if repeat-mode is enabled
