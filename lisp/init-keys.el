@@ -30,6 +30,7 @@
 ;; Some necessary Keyboard remappings for sanity
 (global-unset-key "\C-z")  ; Don't let C-z iconify the frame
 (global-unset-key "\C-l")  ; Disable recentering to avoid a nervous tic
+(global-set-key (kbd "C-S-l") 'recenter)  ; put recenter on C-S-l instead
 ;(global-set-key (kbd "C-.") 'set-mark-command)    ; alternative to C-SPC
 ;(global-set-key (kbd "C-x C-.") 'pop-global-mark) ; alternative to C-x SPC
 (global-set-key (kbd "C-c SPC") 'just-one-space)  ; since M-SPC may be in use by the OS
