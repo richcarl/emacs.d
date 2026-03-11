@@ -317,8 +317,10 @@ indenting should be done, e.g. when using move-text."
   (define-key embark-symbol-map (kbd "G") #'consult-git-grep)
   (define-key embark-variable-map (kbd "g") #'consult-ripgrep)
   (define-key embark-variable-map (kbd "G") #'consult-git-grep)
+  ;; Embark actions
+  (define-key embark-region-map (kbd "c") #'eglot-code-actions)
+  (define-key embark-identifier-map (kbd "c") #'eglot-code-actions)
   )
-
 
 ;; Consult for candidate completion and selection with previews
 (use-package consult
