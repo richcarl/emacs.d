@@ -50,7 +50,7 @@
   )
 
 
-;; Quick jumping to items on screen, or acting directly on them
+;; Avy for quick jumping to items on screen, or acting directly on them
 (use-package avy
   :config
   ;; avy-goto-char-timer: start typing a prefix, then after the timeout,
@@ -59,6 +59,16 @@
   (global-set-key (kbd "M-j") 'avy-goto-char-timer)
   (define-key isearch-mode-map (kbd "M-j") 'avy-isearch)
   (setopt avy-timeout-seconds 0.7)  ; default is 0.5
+  ;; integrate avy with embark
+  (defun avy-action-embark (pt)
+    (unwind-protect
+        (save-excursion
+          (goto-char pt)
+          (embark-act))
+      (select-window
+       (cdr (ring-ref avy-ring 0))))
+    t)
+  (setf (alist-get ?. avy-dispatch-alist) 'avy-action-embark)
   )
 
 
