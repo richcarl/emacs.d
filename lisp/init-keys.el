@@ -10,6 +10,20 @@
 (setopt mac-command-modifier 'meta)
 (setopt mac-option-modifier 'none)
 (setopt mac-right-option-modifier 'ctrl)
+(when (and (eq system-type 'darwin)
+           (not (boundp 'ns-system-appearance))) ; check for emacs-plus
+  ;; At least in Emacs-plus, for some reason Emacs takes priority over the
+  ;; system key for switching between windows of the same application, which by
+  ;; default is Cmd-`. We need to explicitly tell Emacs to switch frames if
+  ;; that key is pressed (assuming we have Cmd as Meta).
+  (global-set-key (kbd "M-`") 'other-frame)
+  ;; On a Swedish Mac keyboard, I make the §° and <> keys switch places so that
+  ;; with a US layout `~ is in the same physical location as on a US keyboard.
+  ;; I then define Cmd-§ to be the system shortcut for "focus to next window"
+  ;; (for windows of the same app), which is now on the keys marked <> in both
+  ;; SE and US layouts. Hence, I need to tell Emacs to do the same:
+  (global-set-key (kbd "M-§") 'other-frame)
+  )
 
 ;; Enable the built-in Windmove (Shift + arrow keys to move between windows)
 (windmove-default-keybindings)
