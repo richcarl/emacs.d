@@ -78,6 +78,7 @@ alternative is `LSP Mode', using the function `lsp'."
          ("C-c c f" . eglot-format))
   :config
   (setopt eglot-report-progress nil) ; don't be so noisy
+  (setopt eglot-extend-to-xref t) ; enable eglot in xref:ed non-project files
   (add-hook 'eglot-managed-mode-hook
             (function
              (lambda ()
