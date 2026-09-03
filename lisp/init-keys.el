@@ -1,4 +1,4 @@
-;;; init-keys.el --- Key bindings
+;;; init-keys.el --- Key bindings -*- lexical-binding: t -*-
 
 ;;; Commentary:
 

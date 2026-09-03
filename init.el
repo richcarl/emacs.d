@@ -1,4 +1,4 @@
-;;  Emacs startup script
+;; Emacs startup script -*- lexical-binding: t -*-
 ;; (see also early-init.el)
 
 ;; Ensure the initial frame is on top and in focus (esp. needed on Mac OS)

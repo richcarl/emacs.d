@@ -1,4 +1,4 @@
-;;; init-coding.el --- Programming Languages and Compilation
+;;; init-coding.el --- Programming Languages and Compilation -*- lexical-binding: t -*-
 
 ;;; Commentary:
 

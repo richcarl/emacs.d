@@ -1,4 +1,4 @@
-;;  Local settings (applied before loading main setup)
+;; Local settings (applied before loading main setup) -*- lexical-binding: t -*-
 
 ;; Set your name explicitly since some environments like WSL define $NAME
 (setopt user-full-name "Your Name Here (defined in init-local.el)")

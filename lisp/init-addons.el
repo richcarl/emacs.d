@@ -1,4 +1,4 @@
-;;; init-addons.el --- General enhancements not included by default
+;;; init-addons.el --- General enhancements not included by default -*- lexical-binding: t -*-
 
 ;;; Commentary:
 

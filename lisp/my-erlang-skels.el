@@ -1,4 +1,4 @@
-;; load default erlang templates
+;; load default erlang templates -*- lexical-binding: t -*-
 (load "erlang-skels")
 
 ; I prefer "%% ---..." before "%%%---..."

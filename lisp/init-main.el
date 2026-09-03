@@ -1,4 +1,4 @@
-;;; init-main.el --- Generic (system-independent) Emacs configuration
+;;; init-main.el --- Generic (system-independent) Emacs configuration -*- lexical-binding: t -*-
 
 ;;; Commentary:
 

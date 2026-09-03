@@ -1,4 +1,4 @@
-;;; init-basics.el --- Configuration of built-in Emacs features
+;;; init-basics.el --- Configuration of built-in Emacs features -*- lexical-binding: t -*-
 
 ;;; Commentary:
 

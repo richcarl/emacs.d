@@ -1,4 +1,4 @@
-;;  Emacs early-startup script
+;; Emacs early-startup script -*- lexical-binding: t -*-
 ;; (note that any messages at this stage get printed to the console)
 
 ;; keep GC at a minimum during startup, restore as last point after init

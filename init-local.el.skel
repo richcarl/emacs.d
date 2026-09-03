@@ -1,4 +1,4 @@
-;; Local settings (applied after loading main setup)
+;; Local settings (applied after loading main setup) -*- lexical-binding: t -*-
 
 ;(setopt fill-column 79)
 

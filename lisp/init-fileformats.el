@@ -1,4 +1,4 @@
-;;; init-fileformats.el --- Configuration for editing various file formats
+;;; init-fileformats.el --- Configuration for editing various file formats -*- lexical-binding: t -*-
 
 ;;; Commentary:
 

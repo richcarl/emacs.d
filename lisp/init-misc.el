@@ -1,4 +1,4 @@
-;;; init-misc.el --- A place for various home made hacks and other stuff
+;;; init-misc.el --- A place for various home made hacks and other stuff -*- lexical-binding: t -*-
 
 ;;; Commentary:
 

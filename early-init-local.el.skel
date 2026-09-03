@@ -1,4 +1,4 @@
-;;  Local early-startup script
+;; Local early-startup script -*- lexical-binding: t -*-
 ;; (note that any messages at this stage get printed to the console)
 ;(message "Loading local early init")
 
