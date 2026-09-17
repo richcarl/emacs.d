@@ -53,7 +53,7 @@ alternative is `LSP Mode', using the function `lsp'."
 
 (setopt compile-command "make MAKEFLAGS= -k -s -w") ; keep going, don't echo commands, print directories
 (setopt compilation-scroll-output 'first-error)
-(global-set-key (kbd "C-c m") 'recompile)
+(global-set-key (kbd "C-c m") 'project-recompile) ; m for Make
 (add-hook 'compilation-mode-hook #'visual-line-mode)
 (add-hook 'compilation-minor-mode-hook #'visual-line-mode)
 
